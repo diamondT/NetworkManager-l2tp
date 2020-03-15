@@ -945,8 +945,9 @@ nm_l2tp_config_write (NML2tpPlugin *plugin,
 			}
 		}
 
-		write_config_option (fd, "  rightprotoport=udp/l2tp\n");
+//		write_config_option (fd, "  rightprotoport=udp/l2tp\n");
 		write_config_option (fd, "  right=%s\n", priv->saddr);
+        write_config_option (fd, "  rightsubnet=%s/32[udp/l2tp]\n", priv->saddr);
 		value = nm_setting_vpn_get_data_item (s_vpn, NM_L2TP_KEY_IPSEC_REMOTE_ID);
 		if (value) {
 			write_config_option (fd, "  rightid=%s\n", value);
